@@ -11,11 +11,16 @@ async function bootstrap() {
       transports: [
         new winston.transports.Console({
           format: winston.format.combine(
-            winston.format.colorize(),
-            winston.format.simple(),
+            winston.format.printf(({ level, message, timestamp, context }) => {
+              return JSON.stringify({
+                timestamp,
+                level,
+                context: context || 'B-SERVICE',
+                message,
+              });
+            }),
           ),
         }),
-        new winston.transports.File({ filename: 'serviceB.log' }),
       ],
     }),
   });
