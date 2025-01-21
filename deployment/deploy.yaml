@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: service-b-demo
-        image: hishmath/nest-demo-service-b:2
+        image: hishmath/nest-demo-service-b:3
         ports:
         - containerPort: 3000
